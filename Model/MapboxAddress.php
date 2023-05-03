@@ -181,11 +181,11 @@ final class MapboxAddress extends Address
     }
 
     /**
-     * @param int|null $relevance
+     * @param float|null $relevance
      *
      * @return MapboxAddress
      */
-    public function setRelevance(int $relevance = null)
+    public function setRelevance(float $relevance = null)
     {
         $new = clone $this;
         $new->relevance = $relevance;
@@ -195,7 +195,7 @@ final class MapboxAddress extends Address
 
 
     /**
-     * @return int|null
+     * @return float|null
      */
     public function getRelevance()
     {
