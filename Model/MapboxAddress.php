@@ -181,9 +181,23 @@ final class MapboxAddress extends Address
     }
 
     /**
-     * @return string
+     * @param int|null $relevance
+     *
+     * @return MapboxAddress
      */
-    public function getRelevance(): int
+    public function setRelevance(int $relevance = null)
+    {
+        $new = clone $this;
+        $new->relevance = $relevance;
+
+        return $new;
+    }
+
+
+    /**
+     * @return int|null
+     */
+    public function getRelevance()
     {
         return $this->relevance;
     }

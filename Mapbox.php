@@ -297,11 +297,6 @@ final class Mapbox extends AbstractHttpProvider implements Provider
                 $builder->setValue('street_name', $result['text']);
             }
 
-            // set Mapbox relevance
-            if (isset($result['relevance'])) {
-                $builder->setValue('relevance', $result['relevance']);
-            }
-
             // update address components
             foreach ($result['context'] as $component) {
                 $this->updateAddressComponent($builder, $component['id'], $component);
@@ -310,6 +305,7 @@ final class Mapbox extends AbstractHttpProvider implements Provider
             /** @var MapboxAddress $address */
             $address = $builder->build(MapboxAddress::class);
             $address = $address->withId($builder->getValue('id'));
+
             if (isset($result['address'])) {
                 $address = $address->withStreetNumber($result['address']);
             }
@@ -319,6 +315,11 @@ final class Mapbox extends AbstractHttpProvider implements Provider
             if (isset($result['place_name'])) {
                 $address = $address->withFormattedAddress($result['place_name']);
             }
+
+            if (isset($result['relevance'])) {
+                $address = $address->setRelevance($result['relevance']);
+            }
+
             $address = $address->withStreetName($builder->getValue('street_name'));
             $address = $address->withNeighborhood($builder->getValue('neighborhood'));
             $results[] = $address;
