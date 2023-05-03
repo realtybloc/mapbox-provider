@@ -297,6 +297,11 @@ final class Mapbox extends AbstractHttpProvider implements Provider
                 $builder->setValue('street_name', $result['text']);
             }
 
+            // set Mapbox relevance
+            if (isset($result['relevance'])) {
+                $builder->setValue('relevance', $result['relevance']);
+            }
+
             // update address components
             foreach ($result['context'] as $component) {
                 $this->updateAddressComponent($builder, $component['id'], $component);
