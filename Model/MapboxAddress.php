@@ -47,10 +47,17 @@ final class MapboxAddress extends Address
     private $neighborhood;
 
     /**
+     * @var array|null
+     */
+
+    private $properties;
+
+
+    /**
      * @var int|null
      */
 
-    private $relevance;
+     private $relevance;
 
     /**
      * @param string|null $id
@@ -201,5 +208,29 @@ final class MapboxAddress extends Address
     {
         return $this->relevance;
     }
+
+
+    /**
+     * @param array|null $relevance
+     *
+     * @return MapboxAddress
+     */
+    public function setProperties(array $properties = null)
+    {
+        $new = clone $this;
+        $new->properties = $properties;
+
+        return $new;
+    }
+
+
+    /**
+     * @return array|null
+     */
+    public function getProperties()
+    {
+        return $this->relevance;
+    }
+
 
 }

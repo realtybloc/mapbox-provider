@@ -320,6 +320,10 @@ final class Mapbox extends AbstractHttpProvider implements Provider
                 $address = $address->setRelevance($result['relevance']);
             }
 
+            if (isset($result['properties'])) {
+                $address = $address->setProperties($result['properties']);
+            }
+
             $address = $address->withStreetName($builder->getValue('street_name'));
             $address = $address->withNeighborhood($builder->getValue('neighborhood'));
             $results[] = $address;
