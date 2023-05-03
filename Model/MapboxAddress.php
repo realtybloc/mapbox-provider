@@ -47,6 +47,12 @@ final class MapboxAddress extends Address
     private $neighborhood;
 
     /**
+     * @var int|null
+     */
+
+    private $relevance;
+
+    /**
      * @param string|null $id
      *
      * @return MapboxAddress
@@ -173,4 +179,13 @@ final class MapboxAddress extends Address
 
         return $new;
     }
+
+    /**
+     * @return string
+     */
+    public function getRelevance(): int
+    {
+        return $this->relevance;
+    }
+
 }
