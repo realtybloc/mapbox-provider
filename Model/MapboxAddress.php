@@ -229,7 +229,7 @@ final class MapboxAddress extends Address
      */
     public function getProperties()
     {
-        return $this->relevance;
+        return $this->properties;
     }
 
 
